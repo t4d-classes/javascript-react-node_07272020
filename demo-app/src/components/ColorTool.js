@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import { ToolHeader } from './ToolHeader';
+
 export const ColorTool = ({ colors }) => {
 
   // const colors = props.colors;
@@ -9,9 +11,7 @@ export const ColorTool = ({ colors }) => {
 
   return (
     <>
-      <header>
-        <h1>Color Tool</h1>
-      </header>
+      <ToolHeader headerText="Color Tool" />
       <ul>
         {colors.map(color =>
           <li key={color.id}>{color.name}</li>)}
