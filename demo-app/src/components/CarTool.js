@@ -1,34 +1,14 @@
 import React from 'react';
 
-export const CarTool = () => {
+import { ToolHeader } from './ToolHeader';
+import { CarTable } from './CarTable';
+
+export const CarTool = ({ cars }) => {
 
   return (
     <>
-      <header>
-        <h1>Car Tool</h1>
-      </header>
-      <table>
-        <thead>
-          <tr>
-            <th>Id</th>
-            <th>Make</th>
-            <th>Model</th>
-            <th>Year</th>
-            <th>Color</th>
-            <th>Price</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>1</td>
-            <td>Ford</td>
-            <td>Fusion Hybrid</td>
-            <td>2018</td>
-            <td>white</td>
-            <td>45000</td>
-          </tr>
-        </tbody>
-      </table>
+      <ToolHeader headerText="Car Tool" />
+      <CarTable cars={cars} />
     </>
   );
 

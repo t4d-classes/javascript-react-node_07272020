@@ -11,10 +11,15 @@ const colorList = [
   { id: 4, name: 'hot pink', hexcode: 'FF69B4' },
 ];
 
+const carList =  [
+  { id: 1, make: 'Ford', model: 'Fusion', year: 2020, color: 'blue', price: 45000 },
+  { id: 2, make: 'Tesla', model: 'S', year: 2019, color: 'red', price: 135000 },
+];
+
 ReactDOM.render(
   <>
     <ColorTool colors={colorList} />
-    <CarTool />
+    <CarTool cars={carList} />
   </>,
   document.querySelector('#root'),
 );
