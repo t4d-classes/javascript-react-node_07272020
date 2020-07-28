@@ -1,35 +1,23 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
+
+import { useForm } from '../hooks/useForm';
 
 export const ColorForm = ({ buttonText, onSubmitColor }) => {
 
-  const [ colorForm, setColorForm ] = useState({
+  const [ colorForm, change, resetColorForm ] = useForm({
     name: '', hexcode: '',
   });
   
-
-  const change = (e) => {
-
-    setColorForm({
-      // object spread operator
-      ...colorForm, // copy the original color form
-      [ e.target.name ]: e.target.value,
-    });
-
-  };
-
   const submitColor = () => {
     onSubmitColor(colorForm);
 
-    setColorForm({
-      name: '', hexcode: '',
-    });
+    resetColorForm();
   };
 
   return (
     <form>
       <div>
-        {/* React.createElement('label', { htmlFor: 'color-name-input' }, 'Color Name') */}
         <label htmlFor="color-name-input">Color Name</label>
         <input type="text" id="color-name-input" name="name"
           value={colorForm.name} onChange={change} />
