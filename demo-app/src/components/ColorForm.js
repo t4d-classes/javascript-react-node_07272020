@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
-
-export const ColorForm = ({ buttonText }) => {
+export const ColorForm = ({ buttonText, onSubmitColor }) => {
 
   const [ colorForm, setColorForm ] = useState({
     name: '', hexcode: '',
@@ -20,7 +19,11 @@ export const ColorForm = ({ buttonText }) => {
   };
 
   const submitColor = () => {
+    onSubmitColor(colorForm);
 
+    setColorForm({
+      name: '', hexcode: '',
+    });
   };
 
   return (
@@ -40,4 +43,13 @@ export const ColorForm = ({ buttonText }) => {
     </form>
   );
 
+};
+
+ColorForm.defaultProps = {
+  buttonText: 'Submit Color',
+};
+
+ColorForm.propTypes = {
+  buttonText: PropTypes.string.isRequired,
+  onSubmitColor: PropTypes.func.isRequired,
 };
