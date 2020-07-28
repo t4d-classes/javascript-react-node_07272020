@@ -3,19 +3,14 @@ import PropTypes from 'prop-types';
 
 import { ToolHeader } from './ToolHeader';
 
-export const ColorTool = ({ colors }) => {
+export const ColorTool = ({ colors: initialColors }) => {
 
   // array destructuring
   const [ colorForm, setColorForm ] = useState({
     name: '', hexcode: '',
   });
 
-  // const colorFormState = useState({
-  //   name: '', hexcode: '',
-  // });
-
-  // const colorForm = colorFormState[0];
-  // const setColorForm = colorFormState[1];
+  const [ colors, setColors ] = useState(initialColors.concat());
 
   const change = (e) => {
 
@@ -27,7 +22,12 @@ export const ColorTool = ({ colors }) => {
 
   };
 
-  console.log(colorForm);
+  const addColor = () => {
+    setColors(colors.concat({
+      ...colorForm,
+      id: Math.max(...colors.map(c => c.id), 0) + 1,
+    }));
+  }
 
   return (
     <>
@@ -48,6 +48,7 @@ export const ColorTool = ({ colors }) => {
           <input type="text" id="color-hexcode-input" name="hexcode"
             value={colorForm.hexcode} onChange={change} />
         </div>
+        <button type="button" onClick={addColor}>Add Color</button>
       </form>
     </>
   );
