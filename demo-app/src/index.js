@@ -18,6 +18,7 @@ const carList =  [
 
 ReactDOM.render(
   <>
+    {/* React.createElement(ColorTool, { colors: colorList } ) */}
     <ColorTool colors={colorList} />
     <CarTool cars={carList} />
   </>,
