@@ -1,20 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
+import { useList } from '../hooks/useList';
 import { ToolHeader } from './ToolHeader';
 import { ColorForm } from './ColorForm';
 
 export const ColorTool = ({ colors: initialColors }) => {
 
-  const [ colors, setColors ] = useState(initialColors.concat());
-
-
-  const addColor = (color) => {
-    setColors(colors.concat({
-      ...color,
-      id: Math.max(...colors.map(c => c.id), 0) + 1,
-    }));
-  };
+  const [ colors, appendColor ] = useList(initialColors.concat());
 
   return (
     <>
@@ -23,7 +16,7 @@ export const ColorTool = ({ colors: initialColors }) => {
         {colors.map(color =>
           <li key={color.id}>{color.name}</li>)}
       </ul>
-      <ColorForm buttonText="Add Color" onSubmitColor={addColor} />
+      <ColorForm buttonText="Add Color" onSubmitColor={appendColor} />
     </>
   );
 
