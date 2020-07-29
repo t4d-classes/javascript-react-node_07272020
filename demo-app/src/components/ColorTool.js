@@ -1,13 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { useColorToolStore } from '../hooks/useColorToolStore';
 import { ToolHeader } from './ToolHeader';
 import { ColorForm } from './ColorForm';
 
-export const ColorTool = ({ colors: initialColors }) => {
-
-  const [ colors, appendColor ] = useColorToolStore(initialColors.concat());
+export const ColorTool = ({ colors, onAppendColor: appendColor }) => {
 
   return (
     <>
