@@ -7,7 +7,10 @@ export const ColorToolContainer = () => {
 
   const colorToolStore = useColorToolStoreContext();
 
-  const [ colors, appendColor ] = colorToolStore;
+  const [ colors, appendColor, removeColor ] = colorToolStore;
 
-  return <ColorTool colors={colors} onAppendColor={appendColor} />;
+  return <ColorTool
+    colors={colors}
+    onAppendColor={appendColor}
+    onRemoveColor={removeColor} />;
 };
