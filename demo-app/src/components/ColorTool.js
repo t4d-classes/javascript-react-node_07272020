@@ -1,13 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { useList } from '../hooks/useList';
+import { useColorToolStore } from '../hooks/useColorToolStore';
 import { ToolHeader } from './ToolHeader';
 import { ColorForm } from './ColorForm';
 
 export const ColorTool = ({ colors: initialColors }) => {
 
-  const [ colors, appendColor ] = useList(initialColors.concat());
+  const [ colors, appendColor ] = useColorToolStore(initialColors.concat());
 
   return (
     <>
