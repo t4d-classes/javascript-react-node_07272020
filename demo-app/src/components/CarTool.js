@@ -1,18 +1,24 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-import { useList } from '../hooks/useList';
+import { useCarToolStore } from '../hooks/useCarToolStore';
 import { ToolHeader } from './ToolHeader';
 import { CarTable } from './CarTable';
 import { CarForm } from './CarForm';
 
 export const CarTool = ({ cars: initialCars }) => {
 
-  const [ cars, appendCar, removeCar ] = useList(initialCars.concat());
+  const [
+    cars, editCarId,
+    appendCar, replaceCar, removeCar,
+    editCar, cancelCar,
+  ] = useCarToolStore(initialCars.concat());
 
   return (
     <>
       <ToolHeader headerText="Car Tool" />
-      <CarTable cars={cars} onDeleteCar={removeCar} />
+      <CarTable cars={cars} editCarId={editCarId}
+        onEditCar={editCar} onDeleteCar={removeCar}
+        onSaveCar={replaceCar} onCancelCar={cancelCar} />
       <CarForm buttonText="Add Car" onSubmitCar={appendCar} />
     </>
   );
