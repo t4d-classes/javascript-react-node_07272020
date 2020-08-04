@@ -1,27 +1,34 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
-import { useList } from './useList';
+import { refreshCars, appendCar, replaceCar, deleteCar } from '../services/cars';
 
-export const useCarToolStore = (initialCars = []) => {
+export const useCarToolStore = () => {
 
-  const [ cars, appendCar, replaceCar, removeCar] = useList(initialCars);
+  const [ cars, setCars ] = useState([]);
 
   const [ editCarId, setEditCarId ] = useState(-1);
 
-  const appendAndCancelCar = (car) => {
-    appendCar(car);
+  const appendAndCancelCar = async (car) => {
+    await appendCar(car);
+    setCars(await refreshCars());
     setEditCarId(-1);
   };
 
-  const replaceAndCancelCar = (car) => {
-    replaceCar(car);
+  const replaceAndCancelCar = async (car) => {
+    await replaceCar(car);
+    setCars(await refreshCars());
     setEditCarId(-1);
   };
 
-  const removeAndCancelCar = (carId) => {
-    removeCar(carId);
+  const removeAndCancelCar = async (carId) => {
+    await deleteCar(carId);
+    setCars(await refreshCars());
     setEditCarId(-1);
   };
+
+  useEffect(() => {
+    refreshCars().then(cars => setCars(cars));
+  }, [ ]);
 
   return [
     cars, editCarId,

@@ -1,0 +1,28 @@
+{
+  "cars": [
+    {
+      "id": 1,
+      "make": "Ford",
+      "model": "Fusion",
+      "year": 2020,
+      "color": "blue",
+      "price": 45000
+    },
+    {
+      "id": 2,
+      "make": "Tesla",
+      "model": "S",
+      "year": 2019,
+      "color": "red",
+      "price": 135002
+    },
+    {
+      "id": 4,
+      "make": "Nissan",
+      "model": "Pathfinder",
+      "year": 2016,
+      "color": "red",
+      "price": 50000
+    }
+  ]
+}

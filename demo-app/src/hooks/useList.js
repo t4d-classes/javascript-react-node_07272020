@@ -27,6 +27,7 @@ export const useList = (initialList = []) => {
     appendItem,
     replaceItem,
     removeItem,
+    setList,
   ];
 
 };

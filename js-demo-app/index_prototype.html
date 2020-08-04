@@ -1,0 +1,153 @@
+<script>
+
+  'use strict';
+
+  /*
+  function doIt() {
+    console.log(this);
+
+    /*
+    const inner = () => {
+      console.log(this);
+    };
+
+    /*
+    const that = this;
+
+    function inner() {
+      console.log(that);
+    }
+
+    inner();
+  }
+
+  // doIt();
+  // window.doIt();
+
+  const o = {
+    id: 2,
+    doIt: doIt,
+  };
+
+  /*
+  const myBind = (fn, context) => {
+
+    return function(...params) {
+      fn.call(context, ...params);
+    };
+
+  };
+
+  const someFunc = o.doIt.bind(o);
+
+  setTimeout(someFunc, 2000);
+ */
+  // console.log(window.doIt === o.doIt);
+
+  /*
+
+  const parent = {
+    name: 'parent',
+    // amt: 1000,
+    displayAmt() {
+      console.log(this.amt);
+    },
+  };
+
+  const child = Object.create(parent);
+  child.name = 'child';
+
+  child.amt = 300;
+  child.displayAmt();
+
+  console.dir(child);
+
+  */
+
+  /*
+  console.dir(child);
+
+  console.log(child.amt);
+
+  parent.amt = 2000;
+
+  console.log(child.amt);
+  console.dir(child);
+
+  child.amt = 15;
+
+  console.log(child.amt);
+  console.log(parent.amt);
+  console.dir(child);
+
+  delete child.amt;
+
+  console.log(child.amt);
+  console.log(parent.amt);
+  console.dir(child);
+  */
+
+
+  class Person {
+
+    constructor(firstName, lastName) {
+      this.firstName = firstName;
+      this.lastName = lastName;
+    }
+
+    getFullName() {
+      return this.firstName + ' ' + this.lastName;
+    }
+
+  }
+
+  class Student extends Person {
+
+    constructor(studentId, firstName, lastName) {
+      super(firstName, lastName);
+      this.studentId = studentId;
+    }
+
+    getRecordInfo() {
+      return this.studentId + ' ' + this.lastName + ', ' + this.firstName;
+    }
+
+  }
+
+  const s = new Student(1, 'Bob', 'Smith');
+  console.log(s.getFullName());
+  console.log(s.getRecordInfo());
+  console.log(s);
+
+  function Person2(firstName, lastName) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+  }
+
+  Person2.prototype.getFullName = function() {
+    return this.firstName + ' ' + this.lastName;
+  };
+
+  function Student2(studentId, firstName, lastName) {
+    this._super(firstName, lastName);
+    this.studentId = studentId;
+  }
+
+  Student2.prototype = Object.create(Person2.prototype);
+  Student2.prototype.constructor = Student2;
+  Student2.prototype._super = Person2;
+
+  Student2.prototype.getRecordInfo = function() {
+    return this.studentId + ' ' + this.lastName + ', ' + this.firstName;
+  }
+
+  const s2 = new Student2(1, 'Bob', 'Smith');
+  console.log(s2.getFullName());
+  console.log(s2.getRecordInfo());
+  console.log(s2);
+
+  console.dir(Student);
+  console.dir(Student2);
+
+
+</script>
